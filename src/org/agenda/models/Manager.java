@@ -56,5 +56,11 @@ public class Manager {
             }
 
         }
+
+        public int espacioLibres() {
+           return capacidadMaxima - contactos.size();
+    }
+
+
     }
 

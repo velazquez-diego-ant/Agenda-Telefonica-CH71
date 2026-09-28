@@ -72,7 +72,7 @@ public class Main {
                         break;
                     case 6:
                         System.out.println("Ha elegido ver el espacio de agenda: " );
-                        
+
                         int libres = miAgenda.espacioLibres();
                         System.out.println("Espacios libres disponibles: " + libres);
                         System.out.println("-----------------------------------");

@@ -8,9 +8,9 @@ public abstract class Contactos {
     private String apellido;
     private Integer numero;
 
-    public Contactos(String nombre, String apellido, Integer numero) {
-        this.nombre = nombre;
-        this.apellido = apellido;
+    public Contactos(String nombre, String apellido, Integer numero) throws InvalidData{
+        setNombre(nombre);
+        setApellido(apellido);
         this.numero = numero;
     }
 

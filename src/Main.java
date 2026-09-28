@@ -75,7 +75,16 @@ public class Main {
                         System.out.println("-----------------------------------");
                         break;
                     case 7:
-                        System.out.println("Ha elegido ver el estado de la agenda: " );
+                        System.out.println("Ha elegido ver el estado de la agenda:");
+
+                        if (miAgenda.agendaLlena()) {
+                            System.out.println(
+                                    "La agenda está llena. No hay espacio disponible."
+                            );
+                        } else {
+                            System.out.println("La agenda tiene espacio disponible.");
+                        }
+
                         System.out.println("-----------------------------------");
                         break;
 

@@ -14,7 +14,7 @@ public class Main {
         contactos.add(new Agenda("Luis", "Perez", 55896352));
         contactos.add(new Agenda("Angel", "Coria", 55896352));
         Scanner scan = new Scanner(System.in);
-        Manager miAgenda = new Manager();
+        Manager miAgenda = new Manager(15);
 
 
         try {

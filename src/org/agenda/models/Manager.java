@@ -1,6 +1,7 @@
 package org.agenda.models;
 import org.agenda.exceptions.InvalidData;
 import java.util.ArrayList;
+
 public class Manager {
     private ArrayList<Contactos> contactos = new ArrayList<>();
     private int capacidadMaxima;

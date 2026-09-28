@@ -72,15 +72,18 @@ public class Main {
                         break;
                     case 6:
                         System.out.println("Ha elegido ver el espacio de agenda: " );
-                        System.out.println("-----------------------------------");
+                        System.out.println("");
                         break;
                     case 7:
                         System.out.println("Ha elegido ver el estado de la agenda: " );
                         System.out.println("-----------------------------------");
                         break;
+                    case 8:
+                        System.out.println("Saliendo del sistema... ");
+                        break;
 
                     default:
-                        System.out.println("No digas #$%&%W mery jane...");
+                        System.out.println("La opción que eliegiste no existe!\n¡Intenta de nuevo!");
                         break;
                 }
 

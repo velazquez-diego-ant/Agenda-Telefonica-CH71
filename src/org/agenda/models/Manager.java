@@ -1,8 +1,15 @@
 package org.agenda.models;
 import org.agenda.exceptions.InvalidData;
 import java.util.ArrayList;
+
 public class Manager {
-    private ArrayList<Contactos> contactos = new ArrayList<>();
+    private ArrayList<Contactos> contactos;
+    private int capacidadMaxima;
+
+    public Manager(int capacidadMaxima) {
+        this.capacidadMaxima = capacidadMaxima;
+        this.contactos = new ArrayList<>();
+    }
     public void agregarContacto(String nombre, String apellido, Integer numero) throws InvalidData {
             for (Contactos c : contactos) {
 

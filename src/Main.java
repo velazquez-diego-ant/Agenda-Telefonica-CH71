@@ -1,10 +1,8 @@
 import org.agenda.exceptions.InvalidData;
-import org.agenda.models.Contactos;
 import org.agenda.models.Agenda;
 import org.agenda.models.Metodos;
-
-import java.util.ArrayList;
 import java.util.Scanner;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -31,18 +29,18 @@ public class Main {
                 switch (opcion) {
                     case 1 -> crearContacto(scanner, agenda);
                     case 2 -> verificarContacto(scanner, agenda);
-                    //case 3 -> agenda.listarContactos();
-//                    case 4 -> buscarContacto(scanner, agenda);
-//                    case 5 -> eliminarContacto(scanner, agenda);
-//                    case 6 -> modificarTelefono(scanner, agenda);
-//                    case 7 -> {
-//                        if (agenda.agendaLlena()) {
-//                            System.out.println("⚠️ La agenda está llena.");
-//                        } else {
-//                            System.out.println("La agenda aún tiene espacio disponible.");
-//                        }
-//                    }
-//                    case 8 -> agenda.espacioLibres();
+                    case 3 -> listarContactos(agenda);
+                    case 4 -> buscarContacto(scanner, agenda);
+                    case 5 -> eliminarContacto(scanner, agenda);
+                    case 6 -> modificarTelefono(scanner, agenda);
+                    case 7 -> {
+                        if (agenda.agendaLlena()) {
+                            System.out.println("La agenda está llena.");
+                        } else {
+                            System.out.println("La agenda aún tiene espacio disponible.");
+                        }
+                    }
+                    case 8 -> agenda.espacioLibres();
                     case 0 -> System.out.println("Saliendo de la agenda...");
                     default -> System.out.println("Opción no válida.");
                 }

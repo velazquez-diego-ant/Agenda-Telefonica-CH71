@@ -1,6 +1,7 @@
 package org.agenda.models;
 
 import org.agenda.exceptions.InvalidData;
+import java.util.Objects;
 
 public abstract class  Contactos {
 

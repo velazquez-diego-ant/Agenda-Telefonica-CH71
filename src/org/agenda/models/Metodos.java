@@ -1,7 +1,8 @@
 package org.agenda.models;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.Scanner;
 
 public class Metodos {
     private int capacidadMaxima;
@@ -67,8 +68,8 @@ public class Metodos {
         }
 
         // Creamos una copia para no alterar la lista original
-        java.util.List<Agenda> ordenados = new java.util.ArrayList<>(contactos);
-        java.util.Collections.sort(ordenados); // Usa el compareTo de la clase Agenda
+        List<Agenda> ordenados = new java.util.ArrayList<>(contactos);
+        Collections.sort(ordenados); // Usa el compareTo de la clase Agenda
 
         System.out.println("\n--- LISTA DE CONTACTOS ---");
         System.out.println("Nombre | Apellido | Teléfono");
@@ -95,10 +96,10 @@ public class Metodos {
 
         if (contactoAEliminar != null) {
             contactos.remove(contactoAEliminar);
-            System.out.println("✅ Contacto eliminado correctamente.");
+            System.out.println("Contacto eliminado correctamente.");
             return true;
         } else {
-            System.out.println("❌ No se encontró el contacto para eliminar.");
+            System.out.println("No se encontró el contacto para eliminar.");
             return false;
         }
     }
@@ -110,13 +111,13 @@ public class Metodos {
             boolean mismoApellido = contacto.getApellido().equalsIgnoreCase(apellido);
             if (mismoNombre && mismoApellido) {
                 contacto.setTelefono(nuevoTelefono);
-                System.out.println("✅ Teléfono modificado correctamente.");
+                System.out.println("Teléfono modificado correctamente.");
                 System.out.print("Nuevo dato: ");
                 contacto.showDetails();
                 return true;
             }
         }
-        System.out.println("❌ No se encontró el contacto para modificar.");
+        System.out.println("No se encontró el contacto para modificar.");
         return false;
     }
 
@@ -128,7 +129,7 @@ public class Metodos {
     // 8. Ver espacios libres
     public int espacioLibres() {
         int libres = capacidadMaxima - contactos.size();
-        System.out.println("📊 Espacios libres: " + libres + " de " + capacidadMaxima);
+        System.out.println("Espacios libres: " + libres + " de " + capacidadMaxima);
         return libres;
     }
 }

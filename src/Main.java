@@ -54,7 +54,7 @@ public class Main {
 
         scanner.close();
     }
-
+//1.añadir contacto
     private static void crearContacto(Scanner scanner, Metodos agenda) {
         try {
             System.out.print("Nombre: ");
@@ -70,7 +70,7 @@ public class Main {
             System.out.println("Error: " + e.getMessage());
         }
     }
-
+//2.Verificar contacto
     private static void verificarContacto(Scanner scanner, Metodos agenda) {
         System.out.print("Nombre a buscar: ");
         String nombre = scanner.nextLine();
@@ -79,6 +79,40 @@ public class Main {
 
         agenda.buscarYMostrarContacto(nombre, apellido);
     }
+    // 3. Listar Contactos
+    private static void listarContactos(Metodos agenda) {
+        agenda.listarContactosOrdenados();
+    }
+
+    // 4. Buscar Contacto
+    private static void buscarContacto(Scanner scanner, Metodos agenda) {
+        System.out.print("Nombre a buscar: ");
+        String nombre = scanner.nextLine();
+        System.out.print("Apellido a buscar: ");
+        String apellido = scanner.nextLine();
+        agenda.buscarYMostrarContacto(nombre, apellido);
+    }
+
+    // 5. Eliminar Contacto
+    private static void eliminarContacto(Scanner scanner, Metodos agenda) {
+        System.out.print("Nombre a eliminar: ");
+        String nombre = scanner.nextLine();
+        System.out.print("Apellido a eliminar: ");
+        String apellido = scanner.nextLine();
+        agenda.eliminarContacto(nombre, apellido);
+    }
+
+    // 6. Modificar teléfono
+    private static void modificarTelefono(Scanner scanner, Metodos agenda) {
+        System.out.print("Nombre del contacto: ");
+        String nombre = scanner.nextLine();
+        System.out.print("Apellido del contacto: ");
+        String apellido = scanner.nextLine();
+        System.out.print("Nuevo teléfono: ");
+        String nuevoTelefono = scanner.nextLine();
+        agenda.modificarTelefono(nombre, apellido, nuevoTelefono);
+    }
+
 
 }
 

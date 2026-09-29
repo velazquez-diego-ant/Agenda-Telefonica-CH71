@@ -1,35 +1,38 @@
 package org.agenda.models;
 import org.agenda.exceptions.InvalidData;
 import java.util.ArrayList;
-import java.util.Objects;
-import java.util.Scanner;
+import java.util.Collections;
+import java.util.List;
 
-public class Agenda extends Contactos implements Comparable<Agenda> {
-    private String telefono;
-    public Agenda(String nombre, String apellido, String telefono) throws InvalidData {
-        super(nombre, apellido);
-        this.telefono = telefono;
+    public class Agenda extends Contactos implements Comparable<Agenda> {
+        private String telefono;
+
+        public Agenda(String nombre, String apellido, String telefono) throws InvalidData {
+            super(nombre, apellido);
+            this.telefono = telefono;
+        }
+
+        public String getTelefono() {
+            return telefono;
+        }
+
+        public void setTelefono(String telefono) {
+            this.telefono = telefono;
+        }
+
+        @Override
+        public void showDetails() {
+            System.out.println(getNombre() + "|" + getApellido() + "|" + telefono);
+        }
+
+        @Override
+        public int compareTo(Agenda agenda) {
+            int cmp = this.getApellido().compareToIgnoreCase(agenda.getApellido());
+            if (cmp != 0) return cmp;
+            return this.getNombre().compareToIgnoreCase(agenda.getNombre());
+        }
     }
 
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
-    @Override
-    public void showDetails() {
-        System.out.println(getNombre() +"|"+ getApellido() +"|"+ telefono);
-    }
-
-    @Override
-    public int compareTo(Agenda agenda) {
-        int cmp = this.getApellido().compareToIgnoreCase(agenda.getApellido());
-        if (cmp != 0) return cmp;
-        return this.getNombre().compareToIgnoreCase(agenda.getNombre());
-    }
 
 
     // Metodo para agregar contactos a la lista
@@ -62,4 +65,4 @@ public class Agenda extends Contactos implements Comparable<Agenda> {
 //            c.showDetails();
 //        }
 //    }
-}
+

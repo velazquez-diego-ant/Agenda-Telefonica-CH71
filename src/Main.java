@@ -14,8 +14,8 @@ public class Main {
 
         do {
             System.out.println("\n========== AGENDA TELEFÓNICA ==========");
-            System.out.println("1. Añadir contacto");
-            System.out.println("2. Verificar si existe contacto");
+            System.out.println("1. Añadir contacto: ");
+            System.out.println("2. Verificar si existe contacto: ");
             System.out.println("3. Listar contactos");
             System.out.println("4. Buscar contacto");
             System.out.println("5. Eliminar contacto");
@@ -30,8 +30,8 @@ public class Main {
 
                 switch (opcion) {
                     case 1 -> crearContacto(scanner, agenda);
-//                    case 2 -> existeContacto(scanner, agenda);
-//                    case 3 -> agenda.listarContactos();
+                    case 2 -> verificarContacto(scanner, agenda);
+                    //case 3 -> agenda.listarContactos();
 //                    case 4 -> buscarContacto(scanner, agenda);
 //                    case 5 -> eliminarContacto(scanner, agenda);
 //                    case 6 -> modificarTelefono(scanner, agenda);
@@ -69,6 +69,15 @@ public class Main {
         } catch (InvalidData e) {
             System.out.println("Error: " + e.getMessage());
         }
+    }
+
+    private static void verificarContacto(Scanner scanner, Metodos agenda) {
+        System.out.print("Nombre a buscar: ");
+        String nombre = scanner.nextLine();
+        System.out.print("Apellido a buscar: ");
+        String apellido = scanner.nextLine();
+
+        agenda.buscarYMostrarContacto(nombre, apellido);
     }
 
 }

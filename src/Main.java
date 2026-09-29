@@ -1,107 +1,75 @@
 import org.agenda.exceptions.InvalidData;
 import org.agenda.models.Contactos;
-import org.agenda.models.Manager;
 import org.agenda.models.Agenda;
+import org.agenda.models.Metodos;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws InvalidData {
-        //Creando un array list
-        ArrayList<Contactos> contactos = new ArrayList<>();
-        Integer option = 0;
-        contactos.add(new Agenda("Andres", "Carrizosa", 55896352));
-        contactos.add(new Agenda("Luis", "Perez", 55896352));
-        contactos.add(new Agenda("Angel", "Coria", 55896352));
-        Scanner scan = new Scanner(System.in);
-        Manager miAgenda = new Manager(15);
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Metodos agenda = new Metodos(); // Tamaño por defecto (10)
+        int opcion;
 
+        do {
+            System.out.println("\n========== AGENDA TELEFÓNICA ==========");
+            System.out.println("1. Añadir contacto");
+            System.out.println("2. Verificar si existe contacto");
+            System.out.println("3. Listar contactos");
+            System.out.println("4. Buscar contacto");
+            System.out.println("5. Eliminar contacto");
+            System.out.println("6. Modificar teléfono");
+            System.out.println("7. Comprobar si está llena");
+            System.out.println("8. Ver espacios libres");
+            System.out.println("0. Salir");
+            System.out.print("Seleccione una opción: ");
 
-        try {
+            try {
+                opcion = Integer.parseInt(scanner.nextLine());
 
-            do {
-                //monstremos un menu y que el usuario pueda elegir entre opcion 1 al 4.
-                System.out.println("Elija la opcion que desea realizar...");
-                System.out.println("1. Consultar lista de contactos."); //listarContactos()
-                System.out.println("2. Buscar contacto"); //buscarContacto(String nombre)
-                System.out.println("3. Existencia de contacto"); //existeContacto()
-                System.out.println("4. Eliminar contacto"); //eliminarContacto()
-                System.out.println("5. Añadir contacto"); //anadirContacto()
-                System.out.println("6. Espacio Libre"); //espacioLibre()
-                System.out.println("7. Estado de agenda"); //agendaLlena()
-                System.out.println("8. Salir");
-                System.out.println("Elija la opcion que le convenga, escriba el numero....");
-
-                option = scan.nextInt(); //pedimos datos asignando lo que se pida con instancia scanner
-
-                switch (option) {
-                    case 1:
-                        System.out.println("Ha elegido consultar lista de contactos" );
-                        System.out.println("procesando...");
-                        for (Contactos agenda: contactos){
-                            agenda.showDetails();
-                            System.out.println("-----------------------------------");
-                        }
-                        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>");
-                        break;
-                    case 2:
-                        System.out.println("Ha elegido buscar contacto: ");
-                        System.out.println("Ingrese el nombre del contacto:");
-                        String nom = scan.next();
-
-                        for (Contactos agen : contactos) {
-                            // Usamos .equals() y accedemos al nombre del objeto
-                            if (agen.getNombre().equals(nom)) {
-                                System.out.println("¡Contacto encontrado!");
-                                agen.showDetails(); // O muestra los datos que necesites
-                            }
-                        }
-                        System.out.println("-----------------------------------");
-                        break;
-                    case 3:
-                        System.out.println("Ha elegido existencia de contacto : " );
-                        System.out.println("-----------------------------------");
-                        break;
-                    case 4:
-                        System.out.println("Ha elegido eliminar contacto: " );
-                        System.out.println("-----------------------------------");
-                        break;
-                    case 5:
-                        System.out.println("Ha elegido añadir contacto: " );
-                        miAgenda.mostrarContactos();
-                        break;
-                    case 6:
-                        System.out.println("Ha elegido ver el espacio de agenda: " );
-
-                        int libres = miAgenda.espacioLibres();
-                        System.out.println("Espacios libres disponibles: " + libres);
-                        System.out.println("-----------------------------------");
-                        break;
-                    case 7:
-                        System.out.println("Ha elegido ver el estado de la agenda:");
-
-                        if (miAgenda.agendaLlena()) {
-                            System.out.println(
-                                    "La agenda está llena. No hay espacio disponible."
-                            );
-                        } else {
-                            System.out.println("La agenda tiene espacio disponible.");
-                        }
-
-                        System.out.println("-----------------------------------");
-                        break;
-
-                    default:
-                        System.out.println("No digas #$%&%W mery jane...");
-                        break;
+                switch (opcion) {
+                    case 1 -> crearContacto(scanner, agenda);
+//                    case 2 -> existeContacto(scanner, agenda);
+//                    case 3 -> agenda.listarContactos();
+//                    case 4 -> buscarContacto(scanner, agenda);
+//                    case 5 -> eliminarContacto(scanner, agenda);
+//                    case 6 -> modificarTelefono(scanner, agenda);
+//                    case 7 -> {
+//                        if (agenda.agendaLlena()) {
+//                            System.out.println("⚠️ La agenda está llena.");
+//                        } else {
+//                            System.out.println("La agenda aún tiene espacio disponible.");
+//                        }
+//                    }
+//                    case 8 -> agenda.espacioLibres();
+                    case 0 -> System.out.println("Saliendo de la agenda...");
+                    default -> System.out.println("Opción no válida.");
                 }
+            } catch (NumberFormatException e) {
+                System.out.println("Debe ingresar un número válido.");
+                opcion = -1;
+            }
+        } while (opcion != 0);
 
-            }while(option !=8);
-
-        }catch (Exception e){
-            System.out.println("Problemas al crear contacto " + e.getMessage());
-        }
-        scan.close();
-
+        scanner.close();
     }
+
+    private static void crearContacto(Scanner scanner, Metodos agenda) {
+        try {
+            System.out.print("Nombre: ");
+            String nombre = scanner.nextLine();
+            System.out.print("Apellido: ");
+            String apellido = scanner.nextLine();
+            System.out.print("Teléfono: ");
+            String telefono = scanner.nextLine();
+
+            Agenda c = new Agenda(nombre, apellido, telefono);
+            agenda.añadirContacto(c);
+        } catch (InvalidData e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
 }
+

@@ -1,8 +1,13 @@
+
 package org.agenda.models;
 import org.agenda.exceptions.InvalidData;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Agenda extends Contactos implements Comparable<Agenda> {
     private String telefono;
+
     public Agenda(String nombre, String apellido, String telefono) throws InvalidData {
         super(nombre, apellido);
         this.telefono = telefono;
@@ -18,17 +23,20 @@ public class Agenda extends Contactos implements Comparable<Agenda> {
 
     @Override
     public void showDetails() {
-        System.out.println(getNombre() +"|"+ getApellido() +"|"+ telefono);
+        System.out.println(getNombre() + "|" + getApellido() + "|" + telefono);
     }
-
 
     @Override
     public int compareTo(Agenda agenda) {
-        return 0;
+        int cmp = this.getApellido().compareToIgnoreCase(agenda.getApellido());
+        if (cmp != 0) return cmp;
+        return this.getNombre().compareToIgnoreCase(agenda.getNombre());
     }
+}
 
 
-    // Metodo para agregar contactos a la lista
+
+// Metodo para agregar contactos a la lista
 //    public void agregarContacto(String nombre, String apellido, Integer numero) throws InvalidData {
 //        for (Contactos c : listaContactos) {
 //            boolean mismoNombre = c.getNombre().equalsIgnoreCase(nombre);
@@ -39,7 +47,7 @@ public class Agenda extends Contactos implements Comparable<Agenda> {
 //            }
 //        }
 //
-//        // Se instancia a sí misma (Agenda) porque es la única clase concreta disponible
+//        Se instancia a sí misma (Agenda) porque es la única clase concreta disponible
 //        Contactos nuevoContacto = new Contactos(nombre, apellido, numero);
 //        listaContactos.add(nuevoContacto);
 //        System.out.println("¡Contacto agregado con éxito!");
@@ -58,6 +66,3 @@ public class Agenda extends Contactos implements Comparable<Agenda> {
 //            c.showDetails();
 //        }
 //    }
-
-}
-

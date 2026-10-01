@@ -1,7 +1,6 @@
 package org.agenda.models;
 
 import org.agenda.exceptions.InvalidData;
-import java.util.Objects;
 
 public abstract class  Contactos {
 
@@ -24,20 +23,5 @@ public abstract class  Contactos {
     }
 
     public abstract void showDetails();
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Contactos contactos = (Contactos) o;
-        return nombre.equalsIgnoreCase(contactos.nombre) &&
-                apellido.equalsIgnoreCase(contactos.apellido);
-    }
-
-    @Override
-    public int hashCode() {
-        return java.util.Objects.hash(nombre.toLowerCase(), apellido.toLowerCase());
-    }
 
 }
